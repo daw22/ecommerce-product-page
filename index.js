@@ -14,6 +14,7 @@ const lightbox = document.querySelector(".light-box");
 const lightboxClose = document.querySelector(".light-box-close");
 const badge = document.querySelector(".badge");
 const deleteFromCart = document.querySelector(".delete-form-cart-icon");
+const addToCartButton = document.querySelector(".add-to-cart-btn")
 // get computed styles
 const bodyStyles = window.getComputedStyle(document.body);
 
@@ -55,55 +56,73 @@ const openAndCloseBasket = () =>{
         cartContent.style.display = "block";    
     }    
 }
-// check out 
-const checkout = () =>{
-    basketIsOpen = !basketIsOpen;
-    basketItemsCount = 0;
-    basket.style.display = "none";
-    badge.style.display = "none";
-}
 
 // quantity selector
-let quantity = 1;
+let quantity = 0;
+
+//enable disable add-to-cart button
+const updateAddtoCartButtonStatus = ()=>{
+    if(quantity == 0)
+        addToCartButton.disabled = true;
+    else
+        addToCartButton.disabled = false;    
+}
+
+updateAddtoCartButtonStatus();
 
 const deacreaseQuantity = () =>{
-    if(quantity > 1)
-        quantity -= 1;
-    quantityAdded.innerHTML = quantity;    
+    if(quantity > 0)
+        quantity -= 1;   
+    quantityAdded.innerHTML = quantity;
+    updateAddtoCartButtonStatus();    
 }
 
 const increaseQuantity = () =>{
     quantity += 1;
     quantityAdded.innerHTML = quantity;
+    updateAddtoCartButtonStatus()
 }
 
 //calculate total price for the item selcted
 const calculatePrice = () =>{
-    cartItemTotalPrice.innerHTML = "$"+quantity * 125;
+    cartItemTotalPrice.innerHTML = "$"+ basketItemsCount * 125;
 }
 
 //add-to-cart
 const addToCart = () =>{
-    cartItemQuantity.innerHTML = quantity;
+    if(quantity == 0) return;
+    basketItemsCount = quantity;
+    cartItemQuantity.innerHTML = basketItemsCount;
     badge.style.display = "flex";
-    badge.innerHTML = quantity;
-    basketItemsCount += 1;
-    quantityAdded.innerHTML = 1;
+    badge.innerHTML = basketItemsCount;
+    quantityAdded.innerHTML = 0;
+    quantity = 0;
     calculatePrice();
     openAndCloseBasket();
     openAndCloseBasket();
+    updateAddtoCartButtonStatus();
 }
 
 // delete items from cart
 deleteFromCart.addEventListener("click",(e)=>{
-    if(quantity == 1){
+    if(basketItemsCount == 1){
         checkout();
     }
-    deacreaseQuantity();
-    cartItemQuantity.innerHTML = quantity;
-    badge.innerHTML = quantity;
+    if(basketItemsCount > 0)
+        basketItemsCount -= 1;
+    cartItemQuantity.innerHTML = basketItemsCount;
+    badge.innerHTML = basketItemsCount;
     calculatePrice();
 })
+
+// check out 
+const checkout = () =>{
+    basketIsOpen = !basketIsOpen;
+    basketItemsCount = 0;
+    quantity = 0;
+    basket.style.display = "none";
+    badge.style.display = "none";
+}
 
 // image slider
 let lightboxIsOpen = false;
@@ -175,13 +194,13 @@ thumbnailNavigator.forEach(set =>{
 })
 
 //add event listner to the big images to open lightbox
-Array.from(thumbnailNavigator[1].children).forEach((image,index) =>{
+Array.from(productImages[1].children).forEach((image,index) =>{
     image.addEventListener("click",(e)=>{
         if(window.screen.width > 799)
             openLightBox(index);
-            console.log(activeSlider);
     })
 })
+
 
 // light-box open close
 const openLightBox = (index)=>{
@@ -197,4 +216,5 @@ lightboxClose.addEventListener('click',(e)=>{
     lightboxIsOpen = false;
     reflectOnThumbSlider(currentSlide,currentSlide);   
     activeSlider = 1;
+    document.body.style.overflowY = "";
 })

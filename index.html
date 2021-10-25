@@ -6,50 +6,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="index.css">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;700&display=swap" rel="stylesheet">
-    <title>Document</title>
+    <title>Frontend Mentor | ecommerce-product-page</title>
 </head>
 <body>
     <div class="wrapper">
-        <div class="body-overlay"></div>
-        <!--drawer-->
-        <div class="drawer">
-            <img src="./images/icon-close.svg"  alt="" class="drawer-close-icon" onclick="drawerClose()">
-            <ul class="drawer-list">
-                <li>Collections</li>
-                <li>Men</li>
-                <li>Women</li>
-                <li>About</li>
-                <li>Contact</li>
-            </ul>
-        </div>
-        <!--light-box-->
-        <div class="light-box">
-            <div class="light-box-content">
-                <img src="./images/icon-close.svg" alt="" class="light-box-close">
-                <div class="product-view product-view-lb">
-                        <div class="icon-prev icon-prev-lb">
-                            <img src="./images/icon-previous.svg" alt=""  onclick="slideBack()">
+        <section class="menus">
+            <div class="body-overlay"></div>
+            <!--drawer-->
+            <div class="drawer">
+                <img src="./images/icon-close.svg"  alt="" class="drawer-close-icon" onclick="drawerClose()">
+                <ul class="drawer-list">
+                    <li>Collections</li>
+                    <li>Men</li>
+                    <li>Women</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+            </div>
+            <!--light-box-->
+            <div class="light-box">
+                <div class="light-box-content">
+                    <img src="./images/icon-close.svg" alt="" class="light-box-close">
+                    <div class="product-view product-view-lb">
+                            <div class="icon-prev icon-prev-lb">
+                                <img src="./images/icon-previous.svg" alt=""  onclick="slideBack()">
+                            </div>
+                            <div class="icon-next icon-next-lb">
+                                <img src="./images/icon-next.svg" alt=""  onclick="slideForward()">
+                            </div>
+                        <div class="slider">
+                            <div class="product-images-slider">
+                                <img src="./images/image-product-1.jpg" alt="product" class="product-image current-slide">
+                                <img src="./images/image-product-2.jpg" alt="product" class="product-image">
+                                <img src="./images/image-product-3.jpg" alt="product" class="product-image">
+                                <img src="./images/image-product-4.jpg" alt="product" class="product-image">
+                            </div>
                         </div>
-                        <div class="icon-next icon-next-lb">
-                            <img src="./images/icon-next.svg" alt=""  onclick="slideForward()">
+                        <div class="thumbnail-navigator thumbnail-navigator-lb">
+                            <img src="./images/image-product-1-thumbnail.jpg" alt="" class="slider-thumb">
+                            <img src="./images/image-product-2-thumbnail.jpg" alt="" class="slider-thumb">
+                            <img src="./images/image-product-3-thumbnail.jpg" alt="" class="slider-thumb">
+                            <img src="./images/image-product-4-thumbnail.jpg" alt="" class="slider-thumb">
                         </div>
-                    <div class="slider">
-                        <div class="product-images-slider">
-                            <img src="./images/image-product-1.jpg" alt="product" class="product-image current-slide">
-                            <img src="./images/image-product-2.jpg" alt="product" class="product-image">
-                            <img src="./images/image-product-3.jpg" alt="product" class="product-image">
-                            <img src="./images/image-product-4.jpg" alt="product" class="product-image">
-                        </div>
-                    </div>
-                    <div class="thumbnail-navigator thumbnail-navigator-lb">
-                        <img src="./images/image-product-1-thumbnail.jpg" alt="" class="slider-thumb">
-                        <img src="./images/image-product-2-thumbnail.jpg" alt="" class="slider-thumb">
-                        <img src="./images/image-product-3-thumbnail.jpg" alt="" class="slider-thumb">
-                        <img src="./images/image-product-4-thumbnail.jpg" alt="" class="slider-thumb">
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
         <section class="header">
             <nav class="nav-bar">
                 <div class="nav-bar-left">
@@ -137,15 +139,15 @@
             <div class="order-section">
                 <div class="quantity-selector">
                     <img src="./images/icon-minus.svg" alt="" class="minus-icon" onclick = "deacreaseQuantity()">
-                    <span class="quantity">1</span>
+                    <span class="quantity">0</span>
                     <img src="./images/icon-plus.svg" alt="" class="plus-icon" onclick="increaseQuantity()">
                 </div>
-                <div class="add-to-cart-btn" onclick = "addToCart()">
+                <button class="add-to-cart-btn" onclick = "addToCart()">
                     <div class="btn-content">
                         <img src="./images/shopping_cart_white_24dp.svg" alt="add to cart" class="btn-icon">
                         <span>Add to cart</span>
                     </div>
-                </div>
+                </button>
             </div>
         </section>
     </section>
