@@ -209,11 +209,13 @@ body{
 
 .nav-list-item{
     cursor: pointer;
-    padding: 2em 0;
+    padding: 3em 0;
+    color: var(--dark-grayish-blue);
+    font-size: .9em;
+    border: 3px solid transparent;
 }
 
 .nav-list-item:hover{
-    /* padding: calc(2em - 0px) 0; */
     border-bottom: 3px solid var(--primary-orange);
 }
 
@@ -467,7 +469,10 @@ body{
     .wrapper{
         margin: 0 auto;
     }
-    
+
+    .logo{
+        transform: scale(.6);
+    }
     .nav-bar{
         margin: 0 2em 0 2em;
         border-bottom: 1px solid var(--grayish-blue);
@@ -480,6 +485,11 @@ body{
 
     .hamburger{
         display: none;
+    }
+
+    .avatar{
+        width: 3em;
+        height: 3em;
     }
 
     .cart-icon-container{
@@ -514,7 +524,7 @@ body{
         position: relative;
     }
 
-    .icon-prev, .icon-next{
+    .icon-prev-slider, .icon-next-slider{
         display: none;
     }
     .thumbnail-navigator{
